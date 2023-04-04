@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+setxkbmap us dvorak-alt-intl -option ctrl:nocaps
+
+pkill xcape
+
+xcape -e "Control_L=Escape"
+xmodmap -e "keysym space = Super_L"
+xmodmap -e "add mod4 = Super_L"
+xmodmap -e "keycode any = space"
+xcape -e "Super_L=space"
