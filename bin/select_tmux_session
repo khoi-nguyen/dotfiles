@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+SESSION_COUNT=$(tmux list-sessions | wc -l)
+
+if [[ $SESSION_COUNT -lt 1 ]]; then
+  ~/bin/start_tmux_sessions
+fi
+
+SESSION=$(tmux list-sessions | awk -F ":" '{print $1}' | rofi -dmenu)
+alacritty -e tmux attach -t $SESSION
